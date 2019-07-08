@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.demo.youtube.mvvm.R;
 import com.demo.youtube.mvvm.databinding.FragmentHomeBinding;
 import com.demo.youtube.mvvm.model.VideoDetail;
+import com.demo.youtube.mvvm.utils.Constants;
 import com.demo.youtube.mvvm.viewmodel.YTViewModel;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -72,7 +73,7 @@ public class HomeFragment extends Fragment  {
             @Override
             public void onChanged(@Nullable final VideoDetail videoDetail) {
                  youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
-                 youTubePlayerFragment.initialize("AIzaSyDY1f8kc70bVDbJYyIWOGprq0sZ55XYUfA", new YouTubePlayer.OnInitializedListener() {
+                 youTubePlayerFragment.initialize(Constants.API_KEY, new YouTubePlayer.OnInitializedListener() {
                     @Override
                     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
 
