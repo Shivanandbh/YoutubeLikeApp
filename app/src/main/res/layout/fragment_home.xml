@@ -37,17 +37,17 @@
                 android:layout_height="wrap_content"
                 android:indeterminateTint="@color/navIconColor"
                 android:indeterminateTintMode="src_atop"
-                android:visibility="@{ytmodel.videoObserver.visibilityModel.loading ? View.VISIBLE : View.GONE}" />
+                android:visibility="@{ytmodel.videoObserver.progressBarStatusModel.loading ? View.VISIBLE : View.GONE}" />
 
             <TextView
                 style="@style/Title_Text_Style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@{ytmodel.videoObserver.visibilityModel.progress}"
+                android:text="@{ytmodel.videoObserver.progressBarStatusModel.progress}"
                 android:textColor="@color/navIconColor"
                 android:textSize="12sp"
-                android:visibility="@{ytmodel.videoObserver.visibilityModel.loading ? View.GONE : View.VISIBLE}" />
+                android:visibility="@{ytmodel.videoObserver.progressBarStatusModel.loading ? View.GONE : View.VISIBLE}" />
 
         </LinearLayout>
         <include
