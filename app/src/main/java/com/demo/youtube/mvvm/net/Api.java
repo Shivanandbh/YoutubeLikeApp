@@ -15,6 +15,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+/**
+ * Created by ${Shivanand} on 6/15/2019.
+ */
 public class Api {
 
     private static ApiInterface api;
@@ -41,8 +44,8 @@ public class Api {
     }
 
     public interface ApiInterface {
+        /*To get the Video list from the Google Api by passing required parameters*/
         @GET("search")
         Call<ResponseBody> getVideos(@Query("key") String developerKey, @Query("channelId") String channelId, @Query("part") String part, @Query("maxResults") int maxResults);
-       // Call<Result> getYoutbeFeeds(@Query("key") String developerKey, @Query("channelId") String channelId, @Query("part") String id, @Query("alt") String alt);
     }
 }

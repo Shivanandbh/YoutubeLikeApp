@@ -2,7 +2,6 @@ package com.demo.youtube.mvvm.fragments;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,7 +25,7 @@ import java.util.List;
 /**
  * Created by ${Shivanand} on 6/20/2019.
  */
-public class HomeFragment extends Fragment implements YouTubePlayer.PlaybackEventListener, YouTubePlayer.PlayerStateChangeListener {
+public class HomeFragment extends Fragment  {
     private View rootView;
     public YTViewModel ytViewModel;
     public FragmentHomeBinding fragmentHomeBinding;
@@ -55,7 +54,7 @@ public class HomeFragment extends Fragment implements YouTubePlayer.PlaybackEven
         youTubeLayout = rootView.findViewById(R.id.youTubeLayout);
         setupVideoData();
         setupOnItemClick();
-        setupBottomSheetListner();
+        setupBottomSheetListener();
         return rootView;
     }
     private void setupVideoData() {
@@ -72,20 +71,7 @@ public class HomeFragment extends Fragment implements YouTubePlayer.PlaybackEven
         ytViewModel.getSelectedVideoDetail().observe(this, new Observer<VideoDetail>() {
             @Override
             public void onChanged(@Nullable final VideoDetail videoDetail) {
-                /*if (youTubeLayout!=null){
-                    ViewGroup.LayoutParams params = youTubeLayout.getLayoutParams();
-                    System.out.println("Width="+params.width+"Height="+params.height);
-                    if(params.width==-1&& params.height==-2){
-                        final float scale = getActivity().getResources().getDisplayMetrics().density;
-                        params.width = (int) (200 * scale + 0.1f);
-                        params.height = (int) (110 * scale + 0.1f);
-                   *//* params.height = 110;
-                    params.width = 200;*//*
-                        youTubeLayout.setLayoutParams(params);
-                    }
-                }*/
                  youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
-               //  youTubePlayerFragment.initialize("AIzaSyDY1f8kc70bVDbJYyIWOGprq0sZ55XYUfA",HomeFragment.this);
                  youTubePlayerFragment.initialize("AIzaSyDY1f8kc70bVDbJYyIWOGprq0sZ55XYUfA", new YouTubePlayer.OnInitializedListener() {
                     @Override
                     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
@@ -95,7 +81,6 @@ public class HomeFragment extends Fragment implements YouTubePlayer.PlaybackEven
                             YPlayer.loadVideo(videoDetail.getVideoId());
                             player.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
                             YPlayer.play();
-                            YPlayer.setPlayerStateChangeListener(HomeFragment.this);
                         }
                     }
 
@@ -117,7 +102,7 @@ public class HomeFragment extends Fragment implements YouTubePlayer.PlaybackEven
             }
         });
     }
-    private void setupBottomSheetListner() {
+    private void setupBottomSheetListener() {
         ytViewModel.getBottomSheetState().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer integer) {
@@ -125,79 +110,8 @@ public class HomeFragment extends Fragment implements YouTubePlayer.PlaybackEven
                 if(youTubeLayout!=null && integer==4){
                     YPlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
                 }
-                 /*if (youTubeLayout!=null && integer==4){
-                    ViewGroup.LayoutParams params = youTubeLayout.getLayoutParams();
-                    System.out.println("Width="+params.width+"Height="+params.height);
-                    if(params.width==-1&& params.height==-1){
-                        final float scale = getActivity().getResources().getDisplayMetrics().density;
-                        params.width = (int) (100 * scale + 0.5f);
-                        params.height = (int) (240 * scale + 0.5f);
-                        youTubeLayout.setLayoutParams(params);
-                    }
-                }else{
-                     if (youTubeLayout!=null && integer==3){
-                             ViewGroup.LayoutParams params = youTubeLayout.getLayoutParams();
-                             params.width = -1;
-                             params.height = -1;
-                             youTubeLayout.setLayoutParams(params);
-                         }
-                 }*/
             }
         });
     }
-    @Override
-    public void onLoading() {
 
-    }
-
-    @Override
-    public void onLoaded(String s) {
-
-    }
-
-    @Override
-    public void onAdStarted() {
-
-    }
-
-    @Override
-    public void onVideoStarted() {
-
-    }
-
-    @Override
-    public void onVideoEnded() {
-
-    }
-
-    @Override
-    public void onError(YouTubePlayer.ErrorReason errorReason) {
-        Toast.makeText(getActivity(), errorReason.toString(), Toast.LENGTH_LONG).show();
-
-    }
-
-    @Override
-    public void onPlaying() {
-
-    }
-
-    @Override
-    public void onPaused() {
-
-    }
-
-    @Override
-    public void onStopped() {
-
-    }
-
-    @Override
-    public void onBuffering(boolean b) {
-
-    }
-
-    @Override
-    public void onSeekTo(int i) {
-
-    }
 }

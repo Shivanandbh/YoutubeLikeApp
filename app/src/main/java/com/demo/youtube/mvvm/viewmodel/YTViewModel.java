@@ -65,10 +65,6 @@ public class YTViewModel extends ViewModel {
             @Override
             public void onStateChanged(@NonNull View view, int newState) {
                 switch (newState) {
-                    case BottomSheetBehavior.STATE_HIDDEN:{
-
-                    }
-                    break;
                     case BottomSheetBehavior.STATE_EXPANDED: {
                         videoObserver.setVisibilityToBottomSheet(BottomSheetBehavior.STATE_EXPANDED);
                         bottomSheetState.setValue(BottomSheetBehavior.STATE_EXPANDED);
@@ -79,21 +75,10 @@ public class YTViewModel extends ViewModel {
                         bottomSheetState.setValue(BottomSheetBehavior.STATE_COLLAPSED);
                     }
                     break;
-                    case BottomSheetBehavior.STATE_DRAGGING:{
-
-                    }
-                    break;
-                    case BottomSheetBehavior.STATE_SETTLING:{
-
-                    }
-                    break;
                 }
             }
-
             @Override
-            public void onSlide(@NonNull View view, float v) {
-
-            }
+            public void onSlide(@NonNull View view, float v) { }
         };
     }
 
@@ -154,9 +139,7 @@ public class YTViewModel extends ViewModel {
     public MutableLiveData<Integer> getBottomSheetState() {
         return bottomSheetState;
     }
-    public void onHideImageClick(){
-        videoObserver.setVisibilityToBottomSheet(BottomSheetBehavior.STATE_COLLAPSED);
-    }
+
     @BindingAdapter({"android:onScroll"})
     public static void bindOnScrollListener(RecyclerView recyclerView, RecyclerView.OnScrollListener onScrollChangeListener) {
         recyclerView.setOnScrollListener(onScrollChangeListener);

@@ -2,15 +2,13 @@ package com.demo.youtube.mvvm.observers;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
-import android.databinding.ObservableBoolean;
-import android.databinding.ObservableInt;
-import android.support.design.widget.BottomSheetBehavior;
 import android.util.Log;
 
 import com.demo.youtube.mvvm.model.BottomSheetStateModel;
+import com.demo.youtube.mvvm.model.ProgressBarStatusModel;
 import com.demo.youtube.mvvm.model.VideoDetail;
-import com.demo.youtube.mvvm.model.VisibilityModel;
 import com.demo.youtube.mvvm.net.Api;
+import com.demo.youtube.mvvm.utils.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,11 +29,11 @@ public class VideoObserver extends BaseObservable {
     public MutableLiveData<List<VideoDetail>> mutableVideoDetail = new MutableLiveData<>();
     public List<VideoDetail> videoDetailList;
 
-    public VisibilityModel visibilityModel = new VisibilityModel();
+    public ProgressBarStatusModel progressBarStatusModel = new ProgressBarStatusModel();
     public BottomSheetStateModel bottomSheetStateModel = new BottomSheetStateModel();
     public void fetchList(int size) {
         videoDetailList = new ArrayList<VideoDetail>();
-        visibilityModel.setLoading(true);
+        progressBarStatusModel.setLoading(true);
         Callback<ResponseBody> callback = new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -59,20 +57,19 @@ public class VideoObserver extends BaseObservable {
                                 videoDetails.setVideoId(videoid);
                                 videoDetailList.add(videoDetails);
                             }
-                            System.out.println("Size of the List==>"+videoDetailList.size());
-                            visibilityModel.setLoading(false);
+                            progressBarStatusModel.setLoading(false);
                             mutableVideoDetail.setValue(videoDetailList);
                         }else if(response.errorBody()!=null){
                             String responseReceived = response.errorBody().string();
                             JSONObject jsonObject=new JSONObject(responseReceived);
                             int errorCode = jsonObject.getJSONObject("error").getInt("code");
                             String errorMessage = jsonObject.getJSONObject("error").getString("message");
-                            if(errorCode==400){
-                                visibilityModel.setLoading(false);
-                                visibilityModel.setProgress("Yeah! You have reached end of the List");
-                            }else if(errorCode==403){
-                                visibilityModel.setLoading(false);
-                                visibilityModel.setProgress("The request cannot be completed because you have reached your daily limit quota.");
+                            if(errorCode==Constants.ERROR_400){
+                                progressBarStatusModel.setLoading(false);
+                                progressBarStatusModel.setProgress("Yeah! You have reached end of the List");
+                            }else if(errorCode==Constants.ERROR_403){
+                                progressBarStatusModel.setLoading(false);
+                                progressBarStatusModel.setProgress("The request cannot be completed because you have reached your daily limit quota.");
                             }
                             System.out.println("Error Response List==>"+jsonObject);
                         }
@@ -89,13 +86,9 @@ public class VideoObserver extends BaseObservable {
                 Log.e("Test", t.getMessage(), t);
             }
         };
-        Api.getApi().getVideos(
-                "AIzaSyD9_jktgSHHg6E42PFeUrUte5YCHeRHpzw",
-                "UC1NF71EwP41VdjAU1iXdLkw",
-                "snippet",
-                size)
-                .enqueue(callback);
+        Api.getApi().getVideos(Constants.API_KEY, Constants.CHANNEL_ID, Constants.PART, size).enqueue(callback);
     }
+    /*This method helps to observe the Bottom sheet behavior*/
     public void setVisibilityToBottomSheet(int newState){
         bottomSheetStateModel.setMyState(newState);
     }

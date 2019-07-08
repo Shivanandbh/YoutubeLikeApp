@@ -15,7 +15,9 @@ import com.bumptech.glide.Glide;
 import com.demo.youtube.mvvm.R;
 import com.demo.youtube.mvvm.views.SimpleDividerItemDecoration;
 
-import static android.widget.LinearLayout.HORIZONTAL;
+/**
+ * Created by ${Shivanand} on 6/15/2019.
+ */
 
 public class CustomViewBindings {
 
@@ -46,6 +48,7 @@ public class CustomViewBindings {
         BottomSheetBehavior<View> viewBottomSheetBehavior = BottomSheetBehavior.from(v);
         viewBottomSheetBehavior.setState(bottomSheetBehaviorState);
     }
+    /*If you are using webview to show video*/
     @BindingAdapter("playVideo")
     public static void bindYoutubeVideos(WebView youTubePlayerView, final String videoId) {
         youTubePlayerView.setWebViewClient(new WebViewClient(){

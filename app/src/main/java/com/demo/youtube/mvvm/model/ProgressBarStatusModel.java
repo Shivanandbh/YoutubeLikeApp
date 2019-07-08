@@ -7,7 +7,7 @@ import com.demo.youtube.mvvm.BR;
 /**
  * Created by ${Shivanand} on 6/25/2019.
  */
-public  class VisibilityModel  extends BaseObservable {
+public  class ProgressBarStatusModel extends BaseObservable {
     public boolean isLoading;
     public String progress;
 
