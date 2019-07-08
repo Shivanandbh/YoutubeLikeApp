@@ -34,7 +34,13 @@ public class CustomViewBindings {
             imageView.setImageBitmap(null);
         }
     }
-
+    @BindingAdapter({"android:ytadapter"})
+    public static void bindYtVideoRecyclerViewAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(recyclerView.getContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.setAdapter(adapter);
+    }
     @BindingAdapter({"android:viewBottomSheet"})
     public static void viewBottomSheet(View v, int bottomSheetBehaviorState) {
         BottomSheetBehavior<View> viewBottomSheetBehavior = BottomSheetBehavior.from(v);
