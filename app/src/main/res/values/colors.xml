@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EEEEEE</color>
+    <color name="colorPrimaryDark">#b6b3b3</color>
+    <color name="colorAccent">#EEEEEE</color>
+    <color name="cardColor">#ffffff</color>
+    <color name="navIconColor">#d72c29</color>
+
+</resources>

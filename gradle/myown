@@ -1,0 +1,68 @@
+https://guides.codepath.com/android/consuming-apis-with-retrofit
+https://github.com/square/retrofit/issues/2179
+https://proandroiddev.com/retrofit-advance-multi-converter-c675e9483801
+
+https://www.simplifiedcoding.net/retrofit-android-example/
+
+http://www.androiddeft.com/retrofit-android/
+
+
+{
+ "kind": "youtube#searchListResponse",
+ "etag": "\"Bdx4f4ps3xCOOo1WZ91nTLkRZ_c/wylyRcy5rLwsE-ojtRS_XwzLPEk\"",
+ "nextPageToken": "CAEQAA",
+ "regionCode": "IN",
+ "pageInfo": {
+  "totalResults": 119949,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"Bdx4f4ps3xCOOo1WZ91nTLkRZ_c/QlhISDcWlFiw0OOuhpuLvwT23qI\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "V5uiarsnPRU"
+   },
+   "snippet": {
+    "publishedAt": "2019-05-30T13:56:38.000Z",
+    "channelId": "UC1NF71EwP41VdjAU1iXdLkw",
+    "title": "PM Modi takes oath for the second term of Prime Minister at Rashtrapati Bhavan",
+    "description": "Subscribe Now: https://goo.gl/8qsb5E Stay Updated! Follow us to stay updated: ▻ Download the NM App: http://nm4.in/dnldapp ▻ Like us on Facebook: ...",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/V5uiarsnPRU/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/V5uiarsnPRU/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/V5uiarsnPRU/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Narendra Modi",
+    "liveBroadcastContent": "none"
+   }
+  }
+ ]
+}
+
+
+https://github.com/evant/binding-collection-adapter
+
+https://medium.com/@ivan_m/data-binding-and-recyclerview-bf9a5d335a60
+
+https://codelabs.developers.google.com/codelabs/android-databinding/#10
+
+https://stackoverflow.com/questions/47513732/how-to-bind-a-viewmodel-to-a-bottomsheet
+
+https://android.jlelse.eu/implement-android-data-binding-library-in-your-android-app-part-2-d30c717b1b63
+
+https://stackoverflow.com/questions/45202531/mvvm-implementing-google-maps-and-having-the-context-in-viewmodel
+https://stackoverflow.com/questions/24980029/resize-video-when-scaling-minimizing-youtubeplayerview-in-android

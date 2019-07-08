@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res/android"
+    android:background="#FAFAFB">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="ytmodel"
+            type="com.demo.youtube.mvvm.viewmodel.YTViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FAFAFB"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FAFAFB"
+                android:onScroll="@{ytmodel.getOnScrollChangeListener()}"
+                android:ytadapter="@{ytmodel.getYtListAdapter()}"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+            <ProgressBar
+                android:id="@+id/myProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/navIconColor"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="@{ytmodel.videoObserver.visibilityModel.loading ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                style="@style/Title_Text_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{ytmodel.videoObserver.visibilityModel.progress}"
+                android:textColor="@color/navIconColor"
+                android:textSize="12sp"
+                android:visibility="@{ytmodel.videoObserver.visibilityModel.loading ? View.GONE : View.VISIBLE}" />
+
+        </LinearLayout>
+        <include
+            layout="@layout/bottom_sheet"
+            bind:ytmodel="@{ytmodel}"
+            />
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
